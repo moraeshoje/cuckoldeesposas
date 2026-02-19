@@ -11,7 +11,6 @@
             --text-color: #ffffff;
             --card-bg: #1e1e1e;
             --accent-color: #1e90ff;
-            --header-footer-bg: #000000;
         }
 
         body.light {
@@ -38,8 +37,8 @@
             position: fixed;
             top: 0;
             width: 100%;
-            height: 60px;
-            background-color: var(--header-footer-bg);
+            height: 70px;
+            background-color: #000000; /* Preto */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -49,57 +48,62 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
+        /* Container do lado esquerdo (Foto + Texto) */
+        header .left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Foto do Grupo - Redonda */
+        header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* Redonda */
+            object-fit: cover;
+            border: 2px solid #ffffff;
+        }
+
+        /* Nome e Subtítulo */
+        header h1 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        header p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #cccccc;
+        }
+
+        /* Botão de Tema (Sol/Lua forçado branco) */
+        header .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
         header button {
             background: none;
             border: none;
             color: white;
-            font-size: 24px;
+            font-size: 20px;
             cursor: pointer;
             padding: 5px;
-            transition: transform 0.2s;
+            border-radius: 4px;
+            transition: background 0.3s;
+            filter: grayscale(100%) brightness(0) invert(1); /* Força ícones a branco */
         }
 
         header button:hover {
-            transform: scale(1.1);
-        }
-
-        /* --- Área de Perfil --- */
-        .profile-container {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%; /* Imagem Redonda */
-            object-fit: cover;
-            border: 3px solid var(--header-footer-bg);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            margin-bottom: 15px;
-        }
-
-        .group-name {
-            font-size: 1.8em;
-            font-weight: bold;
-            margin: 5px 0;
-            color: var(--text-color);
-        }
-
-        .group-bio {
-            font-size: 1.1em;
-            color: #aaaaaa;
-            margin-bottom: 20px;
-        }
-
-        body.light .group-bio {
-            color: #666666;
+            background: rgba(255, 255, 255, 0.2);
         }
 
         /* --- Lista de Regras --- */
         .rules-container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 20px auto;
             padding: 0 20px;
         }
 
@@ -130,7 +134,7 @@
             bottom: 0;
             width: 100%;
             height: 40px;
-            background-color: var(--header-footer-bg);
+            background-color: #000000;
             color: white;
             display: flex;
             justify-content: center;
@@ -141,12 +145,12 @@
 
         /* --- Responsividade --- */
         @media (max-width: 600px) {
-            .avatar {
-                width: 120px;
-                height: 120px;
+            header img {
+                width: 40px;
+                height: 40px;
             }
-            .group-name {
-                font-size: 1.5em;
+            header h1 {
+                font-size: 1em;
             }
         }
     </style>
@@ -155,20 +159,19 @@
 
     <!-- Cabeçalho Fixo -->
     <header>
-        <div class="title"></div>
-        <!-- Botão de Alternar Tema (Lua/Sol) -->
-        <button id="themeToggle" title="Alternar tema">☀️</button>
+        <div class="left">
+            <!-- Foto Redonda do Grupo -->
+            <img src="https://via.placeholder.com/300/1e90ff/ffffff?text=Grupo" alt="Logo">
+            <div>
+                <h1>Grupo Teste</h1>
+                <p>regras</p>
+            </div>
+        </div>
+        <div class="buttons">
+            <!-- Botão de Alternar Tema (Lua/Sol) -->
+            <button id="themeToggle" title="Alternar tema">☀️</button>
+        </div>
     </header>
-
-    <!-- Conteúdo Principal -->
-    <div class="profile-container">
-        <!-- Altere o 'src' para o link da foto do seu grupo -->
-        <img src="@cuckoldeesposas_20250409_143705_0000.png" alt="Foto do Grupo" class="avatar">
-        
-        <!-- Nome e Subtítulo -->
-        <h1 class="group-name">Grupo Teste</h1>
-        <p class="group-bio">Regras</p>
-    </div>
 
     <!-- Lista de Regras -->
     <div class="rules-container">
@@ -229,4 +232,3 @@
 
 </body>
 </html>
-```
