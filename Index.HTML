@@ -1,0 +1,233 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regras - Grupo Teste</title>
+    <style>
+        /* --- Variáveis de Tema --- */
+        :root {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --card-bg: #1e1e1e;
+            --accent-color: #1e90ff;
+            --header-footer-bg: #000000;
+        }
+
+        body.light {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --card-bg: #f0f0f0;
+            --accent-color: #005f99;
+        }
+
+        /* --- Estilos Gerais --- */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+            padding-top: 80px;
+            padding-bottom: 60px;
+        }
+
+        /* --- Header Fixo (Preto) --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            background-color: var(--header-footer-bg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            transition: transform 0.2s;
+        }
+
+        header button:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Área de Perfil --- */
+        .profile-container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Imagem Redonda */
+            object-fit: cover;
+            border: 3px solid var(--header-footer-bg);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+        }
+
+        .group-name {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 5px 0;
+            color: var(--text-color);
+        }
+
+        .group-bio {
+            font-size: 1.1em;
+            color: #aaaaaa;
+            margin-bottom: 20px;
+        }
+
+        body.light .group-bio {
+            color: #666666;
+        }
+
+        /* --- Lista de Regras --- */
+        .rules-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .rule-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .rule-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            color: var(--accent-color);
+        }
+
+        .rule-text {
+            line-height: 1.5;
+            font-size: 0.95em;
+        }
+
+        /* --- Footer (Preto) --- */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 40px;
+            background-color: var(--header-footer-bg);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+
+        /* --- Responsividade --- */
+        @media (max-width: 600px) {
+            .avatar {
+                width: 120px;
+                height: 120px;
+            }
+            .group-name {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho Fixo -->
+    <header>
+        <div class="title"></div>
+        <!-- Botão de Alternar Tema (Lua/Sol) -->
+        <button id="themeToggle" title="Alternar tema">☀️</button>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <div class="profile-container">
+        <!-- Altere o 'src' para o link da foto do seu grupo -->
+        <img src="https://via.placeholder.com/300/1e90ff/ffffff?text=Grupo" alt="Foto do Grupo" class="avatar">
+        
+        <!-- Nome e Subtítulo -->
+        <h1 class="group-name">Grupo Teste</h1>
+        <p class="group-bio">Regras</p>
+    </div>
+
+    <!-- Lista de Regras -->
+    <div class="rules-container">
+        
+        <div class="rule-card">
+            <div class="rule-title">1. Respeito Mútuo</div>
+            <div class="rule-text">Trate todos os membros com respeito. Sem insultos, assédio ou discurso de hate.</div>
+        </div>
+
+        <div class="rule-card">
+            <div class="rule-title">2. Sem Spam</div>
+            <div class="rule-text">Não envie mensagens repetitivas, correntes ou links suspeitos.</div>
+        </div>
+
+        <div class="rule-card">
+            <div class="rule-title">3. Tópicos Relevantes</div>
+            <div class="rule-text">Mantenha as conversas dentro do escopo do grupo.</div>
+        </div>
+
+        <div class="rule-card">
+            <div class="rule-title">4. Sem Política</div>
+            <div class="rule-text">Discussões políticas e religiosas não são permitidas.</div>
+        </div>
+
+    </div>
+
+    <!-- Rodapé Fixo -->
+    <footer>
+        &copy; 2024 Grupo Teste
+    </footer>
+
+    <script>
+        // --- Lógica do Botão de Tema ---
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Verifica se há preferência salva no navegador
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light');
+            themeToggle.textContent = '🌙';
+        } else {
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light');
+            
+            // Troca o ícone e salva a preferência
+            if (body.classList.contains('light')) {
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+
+</body>
+</html>
+```
